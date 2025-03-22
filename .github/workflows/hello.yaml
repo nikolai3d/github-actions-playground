@@ -1,0 +1,65 @@
+name: Test Workflow
+
+on: [push]
+
+jobs:
+  info_linux_self_hosted:
+    name: Info Linux Self Hosted
+    runs-on: [self-hosted, Linux]
+    steps:
+      - name: Core Environment
+        run: |
+          echo "Hello, world!"
+          echo "Current directory: $PWD"
+          echo "Current branch: $GITHUB_REF"
+          echo "Current commit: $GITHUB_SHA"
+          echo "Current job: $GITHUB_JOB"
+          echo "Current step: $GITHUB_STEP_SUMMARY"
+      - name: Regular Environment
+        run: env | sort
+
+  info_linux_ubuntu:
+    name: Info Linux Ubuntu
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Core Environment
+        run: |
+          echo "Hello, world!"
+          echo "Current directory: $PWD"
+          echo "Current branch: $GITHUB_REF"
+          echo "Current commit: $GITHUB_SHA"
+          echo "Current job: $GITHUB_JOB"
+          echo "Current step: $GITHUB_STEP_SUMMARY"
+      - name: Regular Environment
+        run: env | sort
+        
+  info_windows:
+    name: Info Windows
+    runs-on: windows-latest
+    steps:
+      - name: Core Environment
+        run: |
+          Write-Host "Hello, world!"
+          Write-Host "Current directory: $($PWD.Path)"
+          Write-Host "Current branch: $env:GITHUB_REF"
+          Write-Host "Current commit: $env:GITHUB_SHA"
+          Write-Host "Current job: $env:GITHUB_JOB"
+          Write-Host "Current step: $env:GITHUB_STEP_SUMMARY"
+      - name: Regular Environment
+        run: "Get-ChildItem Env: | Sort-Object Name"  
+
+  info_macos:
+    name: Info MacOS
+    runs-on: macos-latest
+    steps:
+      - name: Core Environment
+        run: |
+          echo "Hello, world!"
+          echo "Current directory: $PWD"
+          echo "Current branch: $GITHUB_REF"
+          echo "Current commit: $GITHUB_SHA"
+          echo "Current job: $GITHUB_JOB"
+          echo "Current step: $GITHUB_STEP_SUMMARY"
+      - name: Regular Environment
+        run: "env | sort" 
+
