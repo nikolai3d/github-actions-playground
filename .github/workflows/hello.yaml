@@ -3,21 +3,6 @@ name: Test Workflow
 on: [push]
 
 jobs:
-  info_linux_self_hosted:
-    name: Info Linux Self Hosted
-    runs-on: [self-hosted, Linux]
-    steps:
-      - name: Core Environment
-        run: |
-          echo "Hello, world!"
-          echo "Current directory: $PWD"
-          echo "Current branch: $GITHUB_REF"
-          echo "Current commit: $GITHUB_SHA"
-          echo "Current job: $GITHUB_JOB"
-          echo "Current step: $GITHUB_STEP_SUMMARY"
-      - name: Regular Environment
-        run: env | sort
-
   info_linux_ubuntu:
     name: Info Linux Ubuntu
     runs-on: [ubuntu-latest]
