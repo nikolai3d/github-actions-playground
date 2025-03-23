@@ -38,7 +38,7 @@ jobs:
       - name: Check installed compilers
         run: |
           where cl.exe
-          cl.exe /version
+          cl.exe
           where g++
           g++ --version
 
