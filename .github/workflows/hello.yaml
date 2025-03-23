@@ -32,6 +32,9 @@ jobs:
           Write-Host "Current step: $env:GITHUB_STEP_SUMMARY"
       - name: Regular Environment
         run: "Get-ChildItem Env: | Sort-Object Name"  
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+      
       - name: Check installed compilers
         run: |
           where cl.exe
